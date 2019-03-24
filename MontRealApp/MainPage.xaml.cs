@@ -27,6 +27,8 @@ namespace MontRealApp
         {
             Estudiante.Visibility = Visibility.Collapsed;//Se ocultan todos los grid
             Empleado.Visibility = Visibility.Collapsed;
+            Cobros.Visibility = Visibility.Collapsed;
+            Ver_Datos.Visibility = Visibility.Collapsed;
 
             grid.Visibility = Visibility.Visible; //Se vuelve visible el grid que recibe la función como parámetro
 
@@ -62,6 +64,21 @@ namespace MontRealApp
         private void BtnEmpleado_Click(object sender, RoutedEventArgs e)
         {
             ocultar(Empleado);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCobro_Click(object sender, RoutedEventArgs e)
+        {
+            ocultar(Cobros);
+        }
+
+        private void BtnVer_Click(object sender, RoutedEventArgs e)
+        {
+            ocultar(Ver_Datos);
         }
     }
 }

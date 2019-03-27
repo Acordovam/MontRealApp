@@ -417,7 +417,7 @@
             <AcrylicBrush TintColor="#FFC15959"/>
         </Grid.Background>
         <TextBlock Margin="430,10,0,0" Text="Centro de Enseñanza MontReal" TextWrapping="Wrap" FocusVisualPrimaryBrush="#FF8D1616" FontSize="48" FontWeight="Normal" FontFamily="Segoe UI Semilight" Foreground="White" VerticalAlignment="Top" Height="50" HorizontalAlignment="Left" Width="714"/>
-        <Grid x:Name="Menu" BorderBrush="White" HorizontalAlignment="Left" Width="230">
+        <Grid x:Name="Menu" BorderBrush="White" HorizontalAlignment="Left" Width="230" Visibility="Collapsed">
             <Grid.Background>
                 <AcrylicBrush TintColor="#CC2ACCE6"/>
             </Grid.Background>
@@ -501,7 +501,7 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
         </Grid>
-        <Grid x:Name="Cobros" Margin="250,101,26,0" Height="594" VerticalAlignment="Top" HorizontalAlignment="Stretch" Visibility="Visible">
+        <Grid x:Name="Cobros" Margin="250,101,26,0" Height="594" VerticalAlignment="Top" HorizontalAlignment="Stretch" Visibility="Collapsed">
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="83,75,0,0" Text="ID de Cobro:" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" FontSize="22"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="83,166,0,0" Text="Cantidad a pagar:" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" FontSize="22"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="83,213,0,0" Text="Fecha" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
@@ -533,6 +533,14 @@
             <Button Content="Buscar" HorizontalAlignment="Left" Height="53" Margin="841,531,0,0" VerticalAlignment="Top" Width="153" FontSize="22"/>
             <ComboBox HorizontalAlignment="Left" Height="53" Margin="595,531,0,0" VerticalAlignment="Top" Width="216" FontSize="22"/>
             <TextBox HorizontalAlignment="Left" Height="53" Margin="323,531,0,0" Text="" VerticalAlignment="Top" Width="246" FontSize="22" PlaceholderText="Buscar"/>
+        </Grid>
+        <Grid x:Name="Login" HorizontalAlignment="Left" Height="538" Margin="155,134,0,0" VerticalAlignment="Top" Width="936">
+            <TextBox x:Name="txtuser" HorizontalAlignment="Left" Height="56" Margin="410,173,0,0" Text="" VerticalAlignment="Top" Width="349" FontSize="29"/>
+            <PasswordBox x:Name="txtpass" HorizontalAlignment="Left" Height="56" Margin="410,0,0,0" VerticalAlignment="Center" Width="349" FontSize="29"/>
+            <TextBlock HorizontalAlignment="Left" Height="53" Margin="206,184,0,0" Text="Usuario:" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" FontSize="25"/>
+            <TextBlock HorizontalAlignment="Left" Height="42" Margin="206,252,0,0" Text="Contraseña:" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="25" RenderTransformOrigin="0.532,0.012"/>
+            <Button x:Name="btninicio" Content="Iniciar" HorizontalAlignment="Left" Height="43" Margin="293,320,0,0" VerticalAlignment="Top" Width="210" FontSize="22" Click="Btninicio_Click"/>
+            <Button x:Name="btnsalir" Content="Salir" HorizontalAlignment="Left" Height="43" Margin="540,320,0,0" VerticalAlignment="Top" Width="219" FontSize="22" Click="Btnsalir_Click"/>
         </Grid>
 
     </Grid>

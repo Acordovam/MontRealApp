@@ -33,13 +33,21 @@ namespace MontRealApp
         private string DataBase = "montrealbd";
         private string Master = "root";
         private string pass = "alejandro198";
+        private MySqlDataReader resultado;
+        private MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder();
+       
+        
         //Comienzan Módulos
+
+
+
         void ocultar(Grid grid) //Recibe objeto Grid que no se ocultará
         {
             Estudiante.Visibility = Visibility.Collapsed;//Se ocultan todos los grid
             Empleado.Visibility = Visibility.Collapsed;
             Cobros.Visibility = Visibility.Collapsed;
             Ver_Datos.Visibility = Visibility.Collapsed;
+
 
             grid.Visibility = Visibility.Visible; //Se vuelve visible el grid que recibe la función como parámetro
 
@@ -63,9 +71,33 @@ namespace MontRealApp
             catch(Exception e)
             {
                 MessageBoxAsync("Error", "Error en la conección");
-                
             }
-           
+            
+        }
+
+        private MySqlDataReader consulta(string query)
+        {
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            return rdr;
+        }
+
+        private void alterar(string query)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                MessageBoxAsync("Acción Realizada", "La acción ha sido realizada en la Base de Datos Correctamente.")
+            }
+            catch(Exception e)
+            {
+                MessageBoxAsync("La acción no pudo realizarse con éxito, lamentamos el inconveniente, si el problema persiste porfavor contacte al administrador.");
+            }
+            
+
+            
         }
         private void desconectar()
         {
@@ -139,7 +171,23 @@ namespace MontRealApp
 
         private void Btninicio_Click(object sender, RoutedEventArgs e)
         {
-            
+            string user = txtuser.Text;
+            string pass = txtpass.Password.ToString();
+            resultado = consulta("select 1 from usuario where usuario.alias='"+user+"'and usuario.contraseña='"+pass+"'");
+            if (resultado.HasRows)
+            {
+                MessageBoxAsync("!Bienvenido! " + user, "Bienvenido al Sistema");
+                Login.Visibility = Visibility.Collapsed;
+                ocultar(Estudiante);
+            }
+            else
+            {
+                MessageBoxAsync("Error de Datos", "Usuario o Contraseña Incorrectos, porfavor revise y escriba nuevamente. Si el error persiste comuniquese con el administrador");
+
+            }
+            resultado.Close();
         }
+
+       
     }
 }

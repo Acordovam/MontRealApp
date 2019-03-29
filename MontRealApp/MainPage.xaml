@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Custom="using:Microsoft.Toolkit.Uwp.UI.Controls" x:Name="Principal"
     x:Class="MontRealApp.MainPage"
-    mc:Ignorable="d" ManipulationMode="System"
+    mc:Ignorable="d" ManipulationMode="System" SizeChanged="Principal_SizeChanged"
     >
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
@@ -414,13 +414,13 @@
 
     <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Background="#FF3498DB" FocusVisualPrimaryBrush="#FF5C7980" SizeChanged="Grid_SizeChanged">
         <TextBlock Margin="295,61,0,0" Text="Centro de Enseñanza MontReal" TextWrapping="Wrap" FocusVisualPrimaryBrush="#FF8D1616" FontSize="48" FontWeight="Normal" FontFamily="Yu Gothic UI Light" Foreground="#FFE6DEDE" VerticalAlignment="Top" Height="68" HorizontalAlignment="Left" Width="841" SelectionHighlightColor="#FFF0E8E8"/>
-        <Grid x:Name="Menu" BorderBrush="White" HorizontalAlignment="Left" Width="231" Visibility="Collapsed" Background="#FF221E1E" Margin="1049,0,0,10" VerticalAlignment="Stretch">
+        <Grid x:Name="Menu" BorderBrush="White" HorizontalAlignment="Left" Width="231" Visibility="Visible" Background="#FF221E1E" Margin="1049,0,0,0">
             <Button x:Name="btnEstudiante" Style="{StaticResource EstiloBotones}" Content="Nuevo Estudiante" HorizontalAlignment="Stretch" Height="54" Margin="10,216,10,0" VerticalAlignment="Top" FontSize="22" Foreground="#FF191919" Background="#FFB6B6B6" Click="BtnEstudiante_Click"/>
             <Button x:Name="btnEmpleado" Content="Nuevo Empleado" HorizontalAlignment="Stretch" Height="46" Margin="10,275,10,0" VerticalAlignment="Top" Style="{StaticResource EstiloBotones}" Background="#FFB6B6B6" FontSize="22" Foreground="#FF151515" Click="BtnEmpleado_Click"/>
             <Button x:Name="btnCobro" Content="Nuevo Cobro" HorizontalAlignment="Stretch" Height="50" Margin="10,326,10,0" VerticalAlignment="Top" Style="{StaticResource EstiloBotones}" Background="#FFB6B6B6" Foreground="#FF1B1B1B" FontSize="22" Click="BtnCobro_Click"/>
             <Button x:Name="btnVer" Content="Ver Datos" HorizontalAlignment="Stretch" Height="49" Margin="10,381,10,0" VerticalAlignment="Top" FontSize="22" Background="#FFB6B6B6" Click="BtnVer_Click" Foreground="#FF1B1B1B"/>
         </Grid>
-        <Grid x:Name="Estudiante" Margin="0,126,236,0" RequestedTheme="Light" Visibility="Collapsed" Background="#FF3498DB" HorizontalAlignment="Stretch">
+        <Grid x:Name="Estudiante" Margin="0,126,236,0" RequestedTheme="Light" Visibility="Visible" Background="#FF3498DB" HorizontalAlignment="Stretch">
             <Grid.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -528,7 +528,7 @@
             <ComboBox HorizontalAlignment="Left" Height="53" Margin="595,531,0,0" VerticalAlignment="Top" Width="216" FontSize="22"/>
             <TextBox HorizontalAlignment="Left" Height="53" Margin="323,531,0,0" Text="" VerticalAlignment="Top" Width="246" FontSize="22" PlaceholderText="Buscar"/>
         </Grid>
-        <Grid x:Name="Login" HorizontalAlignment="Center" Height="538" Margin="0,124,0,0" VerticalAlignment="Top" Width="936" Visibility="Visible" Background="#FF221E1E">
+        <Grid x:Name="Login" HorizontalAlignment="Center" Height="538" Margin="0,124,0,0" VerticalAlignment="Top" Width="936" Visibility="Collapsed" Background="#FF221E1E">
             <TextBox x:Name="txtuser" HorizontalAlignment="Left" Height="56" Margin="410,173,0,0" Text="" VerticalAlignment="Top" Width="349" FontSize="29"/>
             <PasswordBox x:Name="txtpass" HorizontalAlignment="Left" Height="56" Margin="410,0,0,0" VerticalAlignment="Center" Width="349" FontSize="29"/>
             <TextBlock HorizontalAlignment="Left" Height="53" Margin="206,184,0,0" Text="Usuario:" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" FontSize="25"/>

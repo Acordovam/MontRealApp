@@ -89,11 +89,11 @@ namespace MontRealApp
             {
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 cmd.ExecuteNonQuery();
-                MessageBoxAsync("Acción Realizada", "La acción ha sido realizada en la Base de Datos Correctamente.")
+                MessageBoxAsync("Acción Realizada", "La acción ha sido realizada en la Base de Datos Correctamente.");
             }
             catch(Exception e)
             {
-                MessageBoxAsync("La acción no pudo realizarse con éxito, lamentamos el inconveniente, si el problema persiste porfavor contacte al administrador.");
+                MessageBoxAsync("Error al guardar","La acción no pudo realizarse con éxito, lamentamos el inconveniente, si el problema persiste porfavor contacte al administrador.");
             }
             
 
@@ -111,6 +111,25 @@ namespace MontRealApp
         }
 
         //Terminan Modulos
+
+            void obenerData()
+        {
+            try
+            {
+                consulta("select secciones.seccion from secciones");
+                while (resultado.Read())
+                {
+                   cbseccionEs.Items.Add( resultado[0].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            
+            
+        }
+
         void Inicializacion()   //Funcion de Inicialización de algunos valores 
         {
             cbsexoEs.Items.Add("F");
@@ -123,6 +142,9 @@ namespace MontRealApp
             Ver_Datos.Visibility = Visibility.Collapsed;
             Login.Visibility = Visibility.Visible;
             coneccion();
+            obenerData();
+            
+
         }
  
   
@@ -188,6 +210,9 @@ namespace MontRealApp
             resultado.Close();
         }
 
-       
+        private void Principal_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
     }
 }

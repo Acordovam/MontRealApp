@@ -27,16 +27,13 @@ namespace MontRealApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private MySqlConnection con;
+        MySqlConnection con= new MySqlConnection();
         private string server = "localhost";
         private string port = "3306";
         private string DataBase = "montrealbd";
         private string Master = "root";
         private string pass = "alejandro198";
-        private MySqlDataReader resultado;
-        private MySqlConnectionStringBuilder sb = new MySqlConnectionStringBuilder();
-       
-        
+        string[] lista = new string[1000];
         //Comienzan Módulos
 
 
@@ -61,7 +58,7 @@ namespace MontRealApp
 
         private void coneccion()
         {
-            con=new MySqlConnection();
+           
             con.ConnectionString = "Server="+server+";Port="+port+";Database="+DataBase+";Uid="+Master+";Pwd="+pass+";";
             try
             {
@@ -72,15 +69,26 @@ namespace MontRealApp
             {
                 MessageBoxAsync("Error", "Error en la conección");
             }
-            
+
         }
 
-        private MySqlDataReader consulta(string query)
+        private string[] consulta(string query)
         {
+            int l = 0;
+            while (l < 1000)
+            {
+                lista[l] = null;
+                l++;
+            }
             MySqlCommand cmd = new MySqlCommand(query, con);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            return rdr;
+            MySqlDataReader rdr = cmd.ExecuteReader();int i=0;
+            while (rdr.Read())
+            {
+                lista[i] = rdr[0].ToString();
+                i++;
+            }
+            rdr.Close();
+            return lista;
         }
 
         private void alterar(string query)
@@ -116,18 +124,23 @@ namespace MontRealApp
         {
             try
             {
-                consulta("select secciones.seccion from secciones");
-                while (resultado.Read())
+
+                int i=0;
+                string[] resul = consulta("select secciones.seccion from secciones;");
+                while (lista[i]!=null)
                 {
-                   cbseccionEs.Items.Add( resultado[0].ToString());
+                    cbseccionEs.Items.Add(lista[i]);
+                    i++;
+                 
                 }
+                
             }
             catch (Exception e)
             {
-
+                MessageBoxAsync("Error", "Error al intentar insertar datos en el campo Secciones. si el problema persiste porfavor contactar al administrador \n"+e);
             }
             
-            
+           
         }
 
         void Inicializacion()   //Funcion de Inicialización de algunos valores 
@@ -142,8 +155,8 @@ namespace MontRealApp
             Ver_Datos.Visibility = Visibility.Collapsed;
             Login.Visibility = Visibility.Visible;
             coneccion();
-            obenerData();
             
+
 
         }
  
@@ -195,22 +208,30 @@ namespace MontRealApp
         {
             string user = txtuser.Text;
             string pass = txtpass.Password.ToString();
-            resultado = consulta("select 1 from usuario where usuario.alias='"+user+"'and usuario.contraseña='"+pass+"'");
-            if (resultado.HasRows)
+            string[] resultado = consulta("select 1 from usuario where usuario.alias='"+user+"'and usuario.contraseña='"+pass+"'");
+            if (resultado[0]!=null)
             {
                 MessageBoxAsync("!Bienvenido! " + user, "Bienvenido al Sistema");
                 Login.Visibility = Visibility.Collapsed;
                 ocultar(Estudiante);
+                obenerData();
             }
             else
             {
                 MessageBoxAsync("Error de Datos", "Usuario o Contraseña Incorrectos, porfavor revise y escriba nuevamente. Si el error persiste comuniquese con el administrador");
 
             }
-            resultado.Close();
+
+           
+            
         }
 
         private void Principal_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
         }

@@ -414,13 +414,13 @@
 
     <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Background="#FF3498DB" FocusVisualPrimaryBrush="#FF5C7980" SizeChanged="Grid_SizeChanged">
         <TextBlock Margin="295,61,0,0" Text="Centro de Enseñanza MontReal" TextWrapping="Wrap" FocusVisualPrimaryBrush="#FF8D1616" FontSize="48" FontWeight="Normal" FontFamily="Yu Gothic UI Light" Foreground="#FFE6DEDE" VerticalAlignment="Top" Height="68" HorizontalAlignment="Left" Width="841" SelectionHighlightColor="#FFF0E8E8"/>
-        <Grid x:Name="Menu" BorderBrush="White" HorizontalAlignment="Left" Width="231" Visibility="Visible" Background="#FF221E1E" Margin="1049,0,0,0">
+        <Grid x:Name="Menu" BorderBrush="White" HorizontalAlignment="Stretch" Visibility="Visible" Background="#FF221E1E" Margin="1049,0,0,0" VerticalAlignment="Stretch">
             <Button x:Name="btnEstudiante" Style="{StaticResource EstiloBotones}" Content="Nuevo Estudiante" HorizontalAlignment="Stretch" Height="54" Margin="10,216,10,0" VerticalAlignment="Top" FontSize="22" Foreground="#FF191919" Background="#FFB6B6B6" Click="BtnEstudiante_Click"/>
             <Button x:Name="btnEmpleado" Content="Nuevo Empleado" HorizontalAlignment="Stretch" Height="46" Margin="10,275,10,0" VerticalAlignment="Top" Style="{StaticResource EstiloBotones}" Background="#FFB6B6B6" FontSize="22" Foreground="#FF151515" Click="BtnEmpleado_Click"/>
             <Button x:Name="btnCobro" Content="Nuevo Cobro" HorizontalAlignment="Stretch" Height="50" Margin="10,326,10,0" VerticalAlignment="Top" Style="{StaticResource EstiloBotones}" Background="#FFB6B6B6" Foreground="#FF1B1B1B" FontSize="22" Click="BtnCobro_Click"/>
             <Button x:Name="btnVer" Content="Ver Datos" HorizontalAlignment="Stretch" Height="49" Margin="10,381,10,0" VerticalAlignment="Top" FontSize="22" Background="#FFB6B6B6" Click="BtnVer_Click" Foreground="#FF1B1B1B"/>
         </Grid>
-        <Grid x:Name="Estudiante" Margin="0,126,236,0" RequestedTheme="Light" Visibility="Visible" Background="#FF3498DB" HorizontalAlignment="Stretch">
+        <Grid x:Name="Estudiante" Margin="0,126,0,0" RequestedTheme="Light" Visibility="Collapsed" Background="#FF3498DB" HorizontalAlignment="Left" Width="1044">
             <Grid.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -431,36 +431,34 @@
             <TextBox x:Name="txtnombreEs" HorizontalAlignment="Left" Height="44" Margin="231,79,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Nombre de Estudiante"/>
             <TextBlock x:Name="txtStyle" HorizontalAlignment="Left" Height="35" Margin="28,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Foreground="White" FontSize="22"><Run Text="ID"/><Run Text=":"/></TextBlock>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="28,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" Foreground="White" FontSize="22"><Run Text="Nombres"/><Run Text=":"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="38" Margin="28,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" FocusVisualPrimaryBrush="{x:Null}" Foreground="White" FontSize="22"><Run Text="Edad"/><Run Text=":"/></TextBlock>
-            <TextBox x:Name="txtapellidoEs" HorizontalAlignment="Left" Height="44" Margin="231,129,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Apellidos"/>
-            <TextBox x:Name="txtedadEs" HorizontalAlignment="Left" Height="44" Margin="231,178,0,0" Text="" VerticalAlignment="Top" Width="243" PlaceholderText="Edad"/>
-            <TextBox x:Name="txtfolioEs" HorizontalAlignment="Left" Height="44" Margin="231,227,0,0" Text="" VerticalAlignment="Top" Width="243" PlaceholderText="No. Folio"/>
-            <TextBox x:Name="txtdireccionEs" HorizontalAlignment="Left" Height="44" Margin="231,0,0,0" Text="" VerticalAlignment="Center" Width="243" Foreground="White" FontSize="22" PlaceholderText="Dirección de Casa"/>
-            <TextBox x:Name="txtencargadoEs" HorizontalAlignment="Left" Height="44" Margin="231,521,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Encargado si lo hay"/>
-            <TextBox x:Name="txtpadreEs" HorizontalAlignment="Left" Height="44" Margin="231,423,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Nombre del Padre"/>
-            <TextBox x:Name="txtmadreEs" HorizontalAlignment="Left" Height="44" Margin="231,472,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Nombre de Madre"/>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="28,138,0,0" Text="Apellidos" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Foreground="White" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="35" Margin="28,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Foreground="White" FontSize="20" Text="Folio:"/>
-            <TextBlock HorizontalAlignment="Left" Height="35" Margin="28,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="White" FontSize="20"><Run Text="Dirección"/><Run Text=":"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="39" Margin="28,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Foreground="White" FontSize="20"><Run Text="Nacimiento"/><Run Text=":"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="28,383,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Foreground="White" FontSize="20"><Run Text="Sexo"/><Run Text=":"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="22" Margin="28,436,0,0" Text="Nombre del Padre:" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Foreground="White" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="28" Margin="28,481,0,0" Text="Nombre de la Madre:" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Foreground="White" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="27" Margin="30.999,528.262,0,0" Text="Encargado:" TextWrapping="Wrap" VerticalAlignment="Top" Width="149.013" Foreground="White" FontSize="20" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock HorizontalAlignment="Left" Height="38" Margin="28,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" FocusVisualPrimaryBrush="{x:Null}" Foreground="White" FontSize="22"><Run Text="Edad"/><Run Text=":"/></TextBlock>
+            <TextBox x:Name="txtedadEs" HorizontalAlignment="Left" Height="44" Margin="231,128,0,0" Text="" VerticalAlignment="Top" Width="243" PlaceholderText="Edad" FontSize="22"/>
+            <TextBox x:Name="txtfolioEs" HorizontalAlignment="Left" Height="44" Margin="231,178,0,0" Text="" VerticalAlignment="Top" Width="243" PlaceholderText="No. Folio" FontSize="22"/>
+            <TextBox x:Name="txtdireccionEs" HorizontalAlignment="Left" Height="44" Margin="231,226,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Dirección de Casa"/>
+            <TextBox x:Name="txtencargadoEs" HorizontalAlignment="Left" Height="44" Margin="231,472,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Encargado si lo hay"/>
+            <TextBox x:Name="txtpadreEs" HorizontalAlignment="Left" Height="44" Margin="231,374,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Nombre del Padre"/>
+            <TextBox x:Name="txtmadreEs" HorizontalAlignment="Left" Height="44" Margin="231,423,0,0" Text="" VerticalAlignment="Top" Width="243" Foreground="White" FontSize="22" PlaceholderText="Nombre de Madre"/>
+            <TextBlock HorizontalAlignment="Left" Height="35" Margin="28,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Foreground="White" FontSize="20" Text="Folio:"/>
+            <TextBlock HorizontalAlignment="Left" Height="35" Margin="28,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="White" FontSize="20"><Run Text="Dirección"/><Run Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="39" Margin="28,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Foreground="White" FontSize="20"><Run Text="Nacimiento"/><Run Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="31" Margin="28,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Foreground="White" FontSize="20"><Run Text="Sexo"/><Run Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="22" Margin="28,387,0,0" Text="Nombre del Padre:" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Foreground="White" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Left" Height="28" Margin="28,432,0,0" Text="Nombre de la Madre:" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Foreground="White" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Left" Height="27" Margin="31,478,0,0" Text="Encargado:" TextWrapping="Wrap" VerticalAlignment="Top" Width="149.013" Foreground="White" FontSize="20" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="0.411"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <CalendarDatePicker x:Name="cdpnacimientoEs" HorizontalAlignment="Left" Height="44" Margin="231,325,0,0" VerticalAlignment="Top" Width="243"/>
-            <ComboBox x:Name="cbsexoEs" HorizontalAlignment="Left" Height="44" Margin="231,374,0,0" VerticalAlignment="Top" Width="243"/>
+            <CalendarDatePicker x:Name="cdpnacimientoEs"  DateFormat="{}{day.integer(2)}/{month.integer(2)}/{year.full}" HorizontalAlignment="Left" Margin="231,272,0,0" VerticalAlignment="Top" Width="243" Height="44" PlaceholderText="Seleccione la Fecha" FontSize="22" DisplayMode="Year"/>
+            <ComboBox x:Name="cbsexoEs" HorizontalAlignment="Left" Height="44" Margin="231,325,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="484,193,0,0" Text="Sección:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" Foreground="White" FontSize="22"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="484,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" Foreground="White" FontSize="22"><Run Text="Jornada"/><Run Text=":"/></TextBlock>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="484,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" Foreground="White" FontSize="22"><Run Text="Carreras"/><Run Text=":"/></TextBlock>
-            <ComboBox x:Name="cbseccionEs" HorizontalAlignment="Left" Height="44" Margin="593,186,0,0" VerticalAlignment="Top" Width="243"/>
-            <ComboBox x:Name="cbjornadaEs" HorizontalAlignment="Left" Height="44" Margin="593,235,0,0" VerticalAlignment="Top" Width="243"/>
-            <ComboBox x:Name="cbcarreraEs" HorizontalAlignment="Left" Height="44" Margin="593,284,0,0" VerticalAlignment="Top" Width="243"/>
-            <Button Content="Guardar" HorizontalAlignment="Left" Height="45" Margin="617,351,0,0" VerticalAlignment="Top" Width="107" FontSize="22" Foreground="White"/>
-            <TextBlock Text="Nuevo Estudiante" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" FontSize="50" Margin="728.172,260.25,-159.534,242.588" Foreground="White" HorizontalAlignment="Stretch">
+            <ComboBox x:Name="cbseccionEs" HorizontalAlignment="Left" Height="44" Margin="593,186,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
+            <ComboBox x:Name="cbjornadaEs" HorizontalAlignment="Left" Height="44" Margin="593,235,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
+            <ComboBox x:Name="cbcarreraEs" HorizontalAlignment="Left" Height="44" Margin="593,284,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
+            <Button Content="Guardar" HorizontalAlignment="Left" Height="45" Margin="617,351,0,0" VerticalAlignment="Top" Width="107" FontSize="22" Foreground="White" Click="Button_Click_1"/>
+            <TextBlock Text="Nuevo Estudiante" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" FontSize="50" Margin="704,238,-136,265" Foreground="White" VerticalAlignment="Stretch">
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="90.18"/>
                 </TextBlock.RenderTransform>
@@ -469,33 +467,31 @@
             <Button x:Name="btnjornada" Content="..." HorizontalAlignment="Left" Height="39" Margin="841,242,0,0" VerticalAlignment="Top" Width="54"/>
             <Button x:Name="btncarreras" Content="..." HorizontalAlignment="Left" Height="39" Margin="841,289,0,0" VerticalAlignment="Top" Width="54"/>
         </Grid>
-        <Grid x:Name="Empleado" VerticalAlignment="Top" Margin="235,143,0,0" Visibility="Collapsed" Height="577" Background="#FF3498DB" FocusVisualPrimaryBrush="#FF5FA8B8">
+        <Grid x:Name="Empleado" VerticalAlignment="Top" Margin="235,143,0,0" Visibility="Collapsed" Height="577" Background="#FF3498DB" FocusVisualPrimaryBrush="#FF5FA8B8" HorizontalAlignment="Left" Width="809">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="199*"/>
                 <ColumnDefinition Width="303*"/>
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="10,85,0,0" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,134,0,0" Text="Nombres:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,183,0,0" Text="Apellidos:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,232,0,0" Text="Teléfono:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
-            <TextBlock HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Center" Width="201" FontSize="22" Margin="0,0,0,0"><Run Text="Correo"/><Run Text=" "/><Run Text="Electrónico:"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"><Run Text="DPI"/><Run Text=":"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"><Run Text="Empleo"/><Run Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,132,0,0" Text="Nombre:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
+            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,181,0,0" Text="Teléfono:" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
+            <TextBlock HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="22" Margin="0,222,0,0"><Run Text="Correo"/><Run Text=" "/><Run Text="Electrónico:"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"><Run Text="DPI"/><Run Text=":"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="31" Margin="0,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"><Run Text="Empleo"/><Run Text=":"/></TextBlock>
             <TextBox x:Name="txtidEm" HorizontalAlignment="Left" Height="44" Margin="198,78,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="ID de Empleado" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtnombreEm" HorizontalAlignment="Left" Height="44" Margin="198,127,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Nombres" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtapellidoEm" HorizontalAlignment="Left" Height="44" Margin="198,176,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Apellidos" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txttelefonoEm" HorizontalAlignment="Left" Height="44" Margin="198,225,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Teléfono" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtcorreoEm" HorizontalAlignment="Left" Height="44" Margin="198,0,0,0" Text="" VerticalAlignment="Center" Width="243" FontSize="22" PlaceholderText="Correo" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtdpiEm" HorizontalAlignment="Left" Height="44" Margin="198,324,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="DPI" Grid.ColumnSpan="2"/>
-            <ComboBox x:Name="cbempleoEm" HorizontalAlignment="Left" Height="44" Margin="198,373,0,0" VerticalAlignment="Top" Width="243" FontSize="22" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnguardarEm" Content="Guardar" HorizontalAlignment="Left" Height="45" Margin="266,446,0,0" VerticalAlignment="Top" Width="107" FontSize="22" Background="#33000000"/>
-            <TextBlock Margin="292,243,-101,286" Text="Nuevo Empleado" TextWrapping="Wrap" FontSize="48" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.Column="1" HorizontalAlignment="Stretch">
+            <TextBox x:Name="txtnombreEm" HorizontalAlignment="Left" Height="44" Margin="198,125,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Nombre Completo" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txttelefonoEm" HorizontalAlignment="Left" Height="44" Margin="198,174,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Teléfono" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtcorreoEm" HorizontalAlignment="Left" Height="44" Margin="198,216,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="Correo" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtdpiEm" HorizontalAlignment="Left" Height="44" Margin="198,264,0,0" Text="" VerticalAlignment="Top" Width="243" FontSize="22" PlaceholderText="DPI" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="cbempleoEm" HorizontalAlignment="Left" Height="44" Margin="198,316,0,0" VerticalAlignment="Top" Width="243" FontSize="22" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnguardarEm" Content="Guardar" HorizontalAlignment="Left" Height="45" Margin="266,394,0,0" VerticalAlignment="Top" Width="107" FontSize="22" Background="#33000000" Grid.ColumnSpan="2" Click="BtnguardarEm_Click"/>
+            <TextBlock Margin="192,197,-126,272" Text="Nuevo Empleado" TextWrapping="Wrap" FontSize="48" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.Column="1" HorizontalAlignment="Stretch">
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="89.408"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
         </Grid>
-        <Grid x:Name="Cobros" Margin="10,126,251,0" Height="594" VerticalAlignment="Top" Visibility="Collapsed" HorizontalAlignment="Stretch" FocusVisualPrimaryBrush="#FF3498DB" Background="#FF3498DB">
+        <Grid x:Name="Cobros" Margin="10,126,0,0" Height="594" VerticalAlignment="Top" Visibility="Collapsed" HorizontalAlignment="Left" FocusVisualPrimaryBrush="#FF3498DB" Background="#FF3498DB" Width="1019">
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="83,75,0,0" Text="ID de Cobro:" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" FontSize="22"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="83,166,0,0" Text="Cantidad a pagar:" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" FontSize="22"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="83,213,0,0" Text="Fecha" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" FontSize="22"/>
@@ -510,23 +506,23 @@
             <ComboBox x:Name="cbjornada" HorizontalAlignment="Left" Height="44" Margin="295,313,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
             <ComboBox x:Name="cbempleado" HorizontalAlignment="Left" Height="44" Margin="295,362,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
             <CalendarDatePicker x:Name="cpfecha" HorizontalAlignment="Left" Height="44" Margin="295,215,0,0" VerticalAlignment="Top" Width="243" FontSize="22"/>
-            <TextBlock Text="Nuevo Cobro" TextWrapping="Wrap" FontSize="48" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="0,264.085,-158.67,258.864" HorizontalAlignment="Right" Width="390.639">
+            <TextBlock Text="Nuevo Cobro" TextWrapping="Wrap" FontSize="48" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="0,262,-156,257" HorizontalAlignment="Right" Width="390" VerticalAlignment="Stretch">
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="89.324"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <Button x:Name="btnguardar" Content="Guardar" HorizontalAlignment="Stretch" Margin="236,431,661,0" VerticalAlignment="Top" FontSize="22" Height="45"/>
+            <Button x:Name="btnguardar" Content="Guardar" HorizontalAlignment="Stretch" Margin="236,431,661,0" VerticalAlignment="Top" FontSize="22" Height="45" Click="Btnguardar_Click"/>
             <Button x:Name="btnalumno" Content="..." HorizontalAlignment="Left" Height="44" Margin="543,117,0,0" VerticalAlignment="Top" Width="52" Click="Button_Click" FontSize="22"/>
             <Button x:Name="btnconcepto" Content="..." HorizontalAlignment="Left" Height="37" Margin="543,268,0,0" VerticalAlignment="Top" Width="52" FontSize="22" RenderTransformOrigin="0.463,0.33"/>
             <Button x:Name="btnjornada1" Content="..." HorizontalAlignment="Left" Height="37" Margin="543,320,0,0" VerticalAlignment="Top" Width="52" FontSize="22"/>
             <Button x:Name="btnempleado" Content="..." HorizontalAlignment="Left" Height="36" Margin="543,370,0,0" VerticalAlignment="Top" Width="52" FontSize="22"/>
         </Grid>
-        <Grid x:Name="Ver_Datos" HorizontalAlignment="Left" Height="594" Margin="251,102,0,0" VerticalAlignment="Top" Width="1004" Visibility="Collapsed" Background="#FF3498DB">
-            <Custom:DataGrid x:Name="VerDatos" HorizontalAlignment="Center" Height="451" VerticalAlignment="Top" Width="900" Margin="0,23,0,0"/>
+        <Grid x:Name="Ver_Datos" HorizontalAlignment="Stretch" Margin="25,124,236,24" Visibility="Visible" Background="#FF3498DB" VerticalAlignment="Stretch">
             <Button Content="Eliminar" HorizontalAlignment="Left" Height="53" Margin="10,531,0,0" VerticalAlignment="Top" Width="143" FontSize="22"/>
             <Button Content="Buscar" HorizontalAlignment="Left" Height="53" Margin="841,531,0,0" VerticalAlignment="Top" Width="153" FontSize="22"/>
             <ComboBox HorizontalAlignment="Left" Height="53" Margin="595,531,0,0" VerticalAlignment="Top" Width="216" FontSize="22"/>
             <TextBox HorizontalAlignment="Left" Height="53" Margin="323,531,0,0" Text="" VerticalAlignment="Top" Width="246" FontSize="22" PlaceholderText="Buscar"/>
+            <Custom:DataGrid x:Name="VerDatos" HorizontalAlignment="Left" Height="475" Margin="0,10,0,0" VerticalAlignment="Top" Width="1009"/>
         </Grid>
         <Grid x:Name="Login" HorizontalAlignment="Center" Height="538" Margin="0,124,0,0" VerticalAlignment="Top" Width="936" Visibility="Collapsed" Background="#FF221E1E">
             <TextBox x:Name="txtuser" HorizontalAlignment="Left" Height="56" Margin="410,173,0,0" Text="" VerticalAlignment="Top" Width="349" FontSize="29"/>

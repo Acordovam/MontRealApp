@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 
-
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
 
 namespace MontRealApp
@@ -25,6 +25,26 @@ namespace MontRealApp
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
+    /// 
+
+        public class Modelo
+    {
+        public string id { get; set; }
+        public string nombre { get; set; }
+        public string edad { get; set; }
+        public string folio { get; set; }
+        public string direccion { get; set; }
+        public string nacimiento { get; set; }
+        public string sexo { get; set; }
+        public string padre { get; set; }
+        public string madre { get; set; }
+        public string encargado { get; set; }
+        public string seccion { get; set; }
+        public string jornada { get; set; }
+        public string carrera { get; set; }
+
+    }
+
     public sealed partial class MainPage : Page
     {
         MySqlConnection con= new MySqlConnection();
@@ -34,6 +54,7 @@ namespace MontRealApp
         private string Master = "root";
         private string pass = "alejandro198";
         string[] lista = new string[1000];
+    
         //Comienzan Módulos
 
 
@@ -67,9 +88,17 @@ namespace MontRealApp
             }
             catch(Exception e)
             {
-                MessageBoxAsync("Error", "Error en la conección");
+                MessageBoxAsync("Error", "Error en la conección. Si el problema persiste porfavor comunicarse con el administrador \n"+e);
             }
 
+        }
+
+        
+        private void cond(string query)
+        {
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            
         }
 
         private string[] consulta(string query)
@@ -82,6 +111,9 @@ namespace MontRealApp
             }
             MySqlCommand cmd = new MySqlCommand(query, con);
             MySqlDataReader rdr = cmd.ExecuteReader();int i=0;
+
+            
+
             while (rdr.Read())
             {
                 lista[i] = rdr[0].ToString();
@@ -101,7 +133,7 @@ namespace MontRealApp
             }
             catch(Exception e)
             {
-                MessageBoxAsync("Error al guardar","La acción no pudo realizarse con éxito, lamentamos el inconveniente, si el problema persiste porfavor contacte al administrador.");
+                MessageBoxAsync("Error al guardar",""+query+"\n\n La acción no pudo realizarse con éxito, lamentamos el inconveniente, si el problema persiste porfavor contacte al administrador.\n"+e);
             }
             
 
@@ -124,7 +156,7 @@ namespace MontRealApp
         {
             try
             {
-
+                //Alumnos
                 int i=0;
                 string[] resul = consulta("select secciones.seccion from secciones;");
                 while (lista[i]!=null)
@@ -133,7 +165,62 @@ namespace MontRealApp
                     i++;
                  
                 }
-                
+
+                 i = 0;
+                resul = consulta("select jornada.jornada from jornada;");
+                while (lista[i] != null)
+                {
+                    cbjornadaEs.Items.Add(lista[i]);
+                    cbjornada.Items.Add(lista[i]);
+                    i++;
+
+                }
+
+                i = 0;
+                resul = consulta("select carreras.nombre from carreras;");
+                while (lista[i] != null)
+                {
+                    cbcarreraEs.Items.Add(lista[i]);
+                    i++;
+
+                }
+                //Empleos
+                i = 0;
+                resul = consulta("select empleo.empleo from empleo;");
+                while (lista[i] != null)
+                {
+                    cbempleoEm.Items.Add(lista[i]);
+                    i++;
+
+                }
+                //Cobros
+                i = 0;
+                resul = consulta("select alumno.nombre from alumno;");
+                while (lista[i] != null)
+                {
+                    cbalumn.Items.Add(lista[i]);
+                    i++;
+
+                }
+
+                i = 0;
+                resul = consulta("select conceptoPago.concepto from conceptoPago;");
+                while (lista[i] != null)
+                {
+                    cbconcepto.Items.Add(lista[i]);
+                    i++;
+
+                }
+                i = 0;
+                resul = consulta("select empleados.nombre from empleados;");
+                while (lista[i] != null)
+                {
+                    cbempleado.Items.Add(lista[i]);
+                    i++;
+
+                }
+                cond("select * from alumno");
+
             }
             catch (Exception e)
             {
@@ -197,10 +284,13 @@ namespace MontRealApp
         private void BtnVer_Click(object sender, RoutedEventArgs e)
         {
             ocultar(Ver_Datos);
+
+
         }
 
         private void Btnsalir_Click(object sender, RoutedEventArgs e)
         {
+            desconectar();
             salir();
         }
 
@@ -214,6 +304,7 @@ namespace MontRealApp
                 MessageBoxAsync("!Bienvenido! " + user, "Bienvenido al Sistema");
                 Login.Visibility = Visibility.Collapsed;
                 ocultar(Estudiante);
+                Menu.Visibility = Visibility.Visible;
                 obenerData();
             }
             else
@@ -234,6 +325,54 @@ namespace MontRealApp
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string idalumno = txtidEs.Text;
+            string nombres = txtnombreEs.Text;
+            string edad = txtedadEs.Text;
+            string ubidoc = txtfolioEs.Text;
+            string direcc = txtdireccionEs.Text;
+
+            string fechaN = cdpnacimientoEs.Date.ToString();
+            fechaN=fechaN.Substring(0, 10);
+            string sexo = cbsexoEs.SelectedItem.ToString();
+            string nombreP = txtpadreEs.Text;
+            string nombreM = txtmadreEs.Text;
+            string nombreE = txtencargadoEs.Text;
+            string seccion = cbseccionEs.SelectedItem.ToString();
+            string jornada = cbjornadaEs.SelectedItem.ToString();
+            string carrera = cbcarreraEs.SelectedItem.ToString();
+
+
+            alterar("insert into alumno values ('"+idalumno+"', '"+nombres+"', '"+edad+"', '"+ubidoc+"', '"+direcc+"', '"+fechaN+"', '"+sexo+"', '"+nombreP+"', '"+nombreM+"', '"+nombreE+"',(select secciones.idsecciones from secciones where secciones.seccion='"+seccion+"'), (select jornada.idjornada from jornada where jornada.jornada='"+jornada+"'), (select carreras.idcarreras from carreras where carreras.nombre='"+carrera+"'))");
+        }
+
+        private void BtnguardarEm_Click(object sender, RoutedEventArgs e)
+        {
+            string id = txtidEm.Text;
+            string nombre = txtnombreEm.Text;
+            string tel = txttelefonoEm.Text;
+            string correo = txtcorreoEm.Text;
+            string dpi = txtdpiEm.Text;
+            string emp = cbempleoEm.SelectedItem.ToString();
+
+            alterar("insert into empleados values('"+id+"', '"+nombre+"', '"+tel+"','"+correo+"', '"+dpi+"',(select empleo.idempleo from empleo where empleo.empleo='"+emp+"' ));");
+        }
+
+        private void Btnguardar_Click(object sender, RoutedEventArgs e)
+        {
+            string id = txtidcobro.Text;
+            string alum = cbalumn.SelectedItem.ToString();
+            string cant = txtcantidad.Text;
+            string fecha = cpfecha.Date.ToString();
+            fecha = fecha.Substring(0,10);
+            string concepto = cbconcepto.SelectedItem.ToString();
+            string jornada = cbjornada.SelectedItem.ToString();
+            string emple = cbempleado.SelectedItem.ToString();
+
+            alterar("insert into cobros values('"+id+"', (select alumno.idalumno from alumno where alumno.nombre='"+alum+"'), '"+cant+"', '"+fecha+"', (select conceptoPago.idconceptoPago from conceptoPago where conceptoPago.concepto='"+concepto+"'), (select jornada.idjornada from jornada where jornada.jornada='"+jornada+"'), (select empleados.idempleados from empleados where empleados.nombre='"+emple+"'))");
         }
     }
 }

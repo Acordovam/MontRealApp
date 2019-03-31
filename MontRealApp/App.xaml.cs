@@ -30,6 +30,7 @@ namespace MontRealApp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
 
         /// <summary>

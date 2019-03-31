@@ -96,9 +96,7 @@ namespace MontRealApp
         
         private void cond(string query)
         {
-            DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand(query, con);
-            
+   
         }
 
         private string[] consulta(string query)
